@@ -5,11 +5,17 @@ import lightgbm as lgb
 from sklearn.metrics import accuracy_score, classification_report
 import joblib
 import os
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("sharmajicoder/gen-z-social-media-usage-dataset")
+
+print("Path to dataset files:", path)
 
 # --- Configuration --- #
 # Set the path to your dataset CSV file. 
 # Adjust this if your dataset is in a different location when running locally.
-DATASET_PATH = 'genz_social_media_usage_1M.csv'
+DATASET_PATH = path
 MODEL_SAVE_PATH = 'social_media_addiction_model.joblib' # Model will be saved in the same directory as the script
 
 print(f"Loading data from: {DATASET_PATH}")

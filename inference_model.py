@@ -4,6 +4,12 @@ import joblib
 import pandas as pd
 import lightgbm as lgb
 from sklearn.preprocessing import LabelEncoder # Import LabelEncoder
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("sharmajicoder/gen-z-social-media-usage-dataset")
+
+print("Path to dataset files:", path)
 
 # Define the path to your saved model
 MODEL_PATH = 'social_media_addiction_model.joblib'
@@ -11,7 +17,7 @@ MODEL_PATH = 'social_media_addiction_model.joblib'
 # Load the trained model
 loaded_model = joblib.load(MODEL_PATH)
 
-df = pd.read_csv("gen-z-social-media-usage-dataset.csv")
+df = pd.read_csv(path)
 
 # Recreate le_target to inverse transform predictions
 # This assumes the original y_train (or a representative sample) is available or can be recreated.
